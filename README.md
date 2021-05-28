@@ -14,7 +14,7 @@ const testCenters = getTestCenters();
 
 ```
 
-```json
+```js
   {
     testcenters: [
           {
@@ -44,24 +44,24 @@ const testCenters = getTestCenterInformation({ hsaid: 'SE2321000131-E00000000768
 
 ```
 
-```json
+```js
   {
-        resultCount: 1,
-        offset: 0,
-        limit: 100,
-        queryTime: 5029997,
-        results: [
-          {
-            postnummer: '54630',
-            foretag: 'Närhälsan',
-            ykoord: '471781',
-            namn: 'Närhälsan Karlsborg vårdcentral',
-            'id': '103',
-            xkoord: '6487874',
-            adress: 'Kärleksstigen 4B',
-            hsaid: 'SE2321000131-E000000002615',
-            postort: 'Karlsborg'
-          }
-        ]
+    resultCount: 1,
+    offset: 0,
+    limit: 100,
+    queryTime: 5029997,
+    results: [
+      {
+        postnummer: '54630',
+        foretag: 'Närhälsan',
+        ykoord: '471781',
+        namn: 'Närhälsan Karlsborg vårdcentral',
+        'id': '103',
+        xkoord: '6487874',
+        adress: 'Kärleksstigen 4B',
+        hsaid: 'SE2321000131-E000000002615',
+        postort: 'Karlsborg'
       }
+    ]
+  }
 ```
