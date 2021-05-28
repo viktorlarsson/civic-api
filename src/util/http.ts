@@ -9,7 +9,7 @@ export const convertToQueryString = (params: any): string => {
     .join('&')}`;
 };
 
-export const request = async <T>(
+export const getRequest = async <T>(
   url: string,
   options: AxiosRequestConfig,
   corsAnywhere: boolean = true

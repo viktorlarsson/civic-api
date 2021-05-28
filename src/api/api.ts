@@ -3,10 +3,10 @@ import {
   TestCenterInformationResponse,
   TestCenterInformation,
 } from '../interfaces/test-center';
-import { request, convertToQueryString } from '../util/http';
+import { getRequest, convertToQueryString } from '../util/http';
 
 export const getTestCenters = async (): Promise<TestCentersResponse> => {
-  return await request<TestCentersResponse>(
+  return await getRequest<TestCentersResponse>(
     'https://test.api.vgregion.se/e-crm-scheduling-public/api/v1/testCenter',
     {
       headers: {
@@ -20,7 +20,7 @@ export const getTestCenters = async (): Promise<TestCentersResponse> => {
 export const getTestCenterInformation = async (
   filters?: Partial<TestCenterInformation>
 ): Promise<TestCenterInformationResponse> => {
-  return await request<TestCenterInformationResponse>(
+  return await getRequest<TestCenterInformationResponse>(
     `https://vgregion.entryscape.net/rowstore/dataset/70241cef-e111-4b07-bb55-99b5981f47de${convertToQueryString(
       filters
     )}`,
