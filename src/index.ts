@@ -1,3 +1,3 @@
-import { getTestCenters, getTestCenterInformation } from "./api";
+import { getTestCenters, getTestCenterInformation } from './api';
 
-export { getTestCenterInformation, getTestCenters }
+export { getTestCenterInformation, getTestCenters };
