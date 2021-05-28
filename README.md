@@ -57,7 +57,7 @@ const testCenters = getTestCenterInformation({ hsaid: 'SE2321000131-E00000000768
         foretag: 'Närhälsan',
         ykoord: '471781',
         namn: 'Närhälsan Karlsborg vårdcentral',
-        'id': '103',
+        id: '103',
         xkoord: '6487874',
         adress: 'Kärleksstigen 4B',
         hsaid: 'SE2321000131-E000000002615',
