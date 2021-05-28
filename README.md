@@ -2,6 +2,7 @@
 
 Integration with Västra Götalands Vaccine API using Javascript.
 
+Work in progress, still got some stuff to figure out.
 
 ## getTestCenters
 
