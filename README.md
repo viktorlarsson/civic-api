@@ -1,15 +1,26 @@
 # Civic API
 
-Integration with Västra Götalands Vaccine API using Javascript.
+Integration with Västra Götalands Vaccine API using Javascript that will work in the browser and node.
 
-Work in progress, still got some stuff to figure out.
+## setCredentials
 
+This is required to run before you to fetch the test centers.
+
+You can find more information on how to obtain your own api key here:
+
+https://vgrblogg.se/utveckling/2021/05/27/hjalp-vgr-testa-vart-api-med-oppna-vaccintider/#egna-nycklar
+ 
+```javascript
+setCredentials('your client id', 'your client secret');
+```
 ## getTestCenters
 
 Fetches the test centers which provides Covid 19 vaccinations in Västra Götaland.
 
 ```javascript
-import { getTestCenters } from 'civic-api';
+import { getTestCenters, setCredentials } from 'civic-api';
+
+setCredentials('your client id', 'your client secret');
 
 const testCenters = getTestCenters();
 
