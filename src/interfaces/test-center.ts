@@ -21,6 +21,7 @@ export interface TestCenterInformation {
   hsaid: string;
   postort: string;
 }
+
 export interface TestCenterInformationResponse {
   resultCount: number;
   offset: number;
