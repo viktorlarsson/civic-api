@@ -11,6 +11,7 @@ export const getTestCenters = async (numberOfWeeks: number = 2, server: server =
   if(!axios.defaults.headers.get['client_id']  && axios.defaults.headers.get['client_secret']) {
     throw new Error('No client id or secret set, run setCredentials first')
   }
+  
   return await getRequest<TestCentersResponse>(
     `${servers[server]}/testCenter?numberOfWeeks=${numberOfWeeks}`,
     corsAnywhere
