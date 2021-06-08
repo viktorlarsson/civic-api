@@ -1,6 +1,7 @@
 # VGR Vaccine Time Slots
 
-Integration with Västra Götalands Vaccine API using Javascript that will work in the browser and node. 
+Integration with Västra Götalands Vaccine API using Javascript that will work in the browser and node. Read more about the project here https://vgrblogg.se/utveckling/2021/05/27/hjalp-vgr-testa-vart-api-med-oppna-vaccintider/ (in Swedish).
+
 
 ## setCredentials
 
