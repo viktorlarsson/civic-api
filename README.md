@@ -30,7 +30,7 @@ const testCenters = getTestCenters();
             updated: '2021-05-28 11:38:35'
           },
     ],
-    numberOfWeeks: 2 // unsure what this actually is
+    numberOfWeeks: 2 
   }
 ```
 
