@@ -9,6 +9,11 @@ export const servers = {
   test: 'https://test.api.vgregion.se/e-crm-scheduling-public/api/v1  '
 }
 
+export const setCredentials = (client_id: string, client_secret: string) => {
+  axios.defaults.headers.get['client_id'] = client_id;
+  axios.defaults.headers.get['client_secret'] = client_secret;
+}
+
 export const convertToQueryString = (params: any): string => {
   if (!params) {
     return '';
@@ -20,8 +25,8 @@ export const convertToQueryString = (params: any): string => {
 
 export const getRequest = async <T>(
   url: string,
-  options: AxiosRequestConfig,
-  corsAnywhere: boolean = true
+  corsAnywhere: boolean = true,
+  options?: AxiosRequestConfig,
 ): Promise<T> => {
   const response = await axios.get<T>(
     `${corsAnywhere && 'https://cors-anywhere.rost.me/'}${url}`,
