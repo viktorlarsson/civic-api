@@ -11,19 +11,17 @@ import { getRequest, convertToQueryString, server, servers } from '../util/http'
  * 
  * @param numberOfWeeks Number of weeks to fetch
  * @param server The server to use
- * @param corsAnywhere Fetches the server through a cors anywhere service
  * 
  * @returns A list of test centers
  */
-export const getTestCenters = async (numberOfWeeks: number = 2, server: server = 'production', corsAnywhere = true): Promise<TestCentersResponse> => {
+export const getTestCenters = async (numberOfWeeks: number = 2, server: server = 'production'): Promise<TestCentersResponse> => {
 
   if(!axios.defaults.headers.get['client_id']  && axios.defaults.headers.get['client_secret']) {
     throw new Error('No client id or secret set, run setCredentials first')
   }
 
   return await getRequest<TestCentersResponse>(
-    `${servers[server]}/testCenter?numberOfWeeks=${numberOfWeeks}`,
-    corsAnywhere
+    `${servers[server]}/testCenter?numberOfWeeks=${numberOfWeeks}`
   );
 };
 
@@ -41,14 +39,12 @@ export const getTestCenters = async (numberOfWeeks: number = 2, server: server =
  * @returns A curated list of test center information
  */
 export const getTestCenterInformation = async (
-  filters?: Partial<TestCenterInformation>,
-  corsAnywhere = true,
+  filters?: Partial<TestCenterInformation>
 ): Promise<TestCenterInformationResponse> => {
   return await getRequest<TestCenterInformationResponse>(
     `https://vgregion.entryscape.net/rowstore/dataset/70241cef-e111-4b07-bb55-99b5981f47de${convertToQueryString(
       filters
     )}`,
-    corsAnywhere,
     {
       headers: {
         accept: 'application/json',

@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import { isBrowser } from './state';
 
 export type server = 'mockingService' | 'qa' | 'production' | 'test';
 
@@ -25,11 +26,10 @@ export const convertToQueryString = (params: any): string => {
 
 export const getRequest = async <T>(
   url: string,
-  corsAnywhere: boolean = true,
   options?: AxiosRequestConfig,
 ): Promise<T> => {
   const response = await axios.get<T>(
-    `${corsAnywhere && 'https://cors-anywhere.rost.me/'}${url}`,
+    `${isBrowser() && 'https://cors-anywhere.rost.me/'}${url}`,
     options
   );
 

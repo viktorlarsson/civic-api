@@ -23,6 +23,7 @@ import { getTestCenters, setCredentials } from 'civic-api';
 setCredentials('your client id', 'your client secret');
 
 const testCenters = getTestCenters();
+const testCenters4weeks = getTestCenters(4, 'production');
 
 ```
 
