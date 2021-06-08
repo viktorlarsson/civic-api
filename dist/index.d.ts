@@ -1,2 +1,3 @@
 import { getTestCenters, getTestCenterInformation } from './api';
-export { getTestCenterInformation, getTestCenters };
+import { setCredentials } from './util/http';
+export { getTestCenterInformation, getTestCenters, setCredentials };

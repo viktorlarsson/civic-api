@@ -796,6 +796,10 @@ var servers = {
   production: 'https://api.vgregion.se/e-crm-scheduling-public/api/v1',
   test: 'https://test.api.vgregion.se/e-crm-scheduling-public/api/v1  '
 };
+var setCredentials = function setCredentials(client_id, client_secret) {
+  axios.defaults.headers.get['client_id'] = client_id;
+  axios.defaults.headers.get['client_secret'] = client_secret;
+};
 var convertToQueryString = function convertToQueryString(params) {
   if (!params) {
     return '';
@@ -937,5 +941,5 @@ var getTestCenterInformation = /*#__PURE__*/function () {
   };
 }();
 
-export { getTestCenterInformation, getTestCenters };
+export { getTestCenterInformation, getTestCenters, setCredentials };
 //# sourceMappingURL=civic-api.esm.js.map
