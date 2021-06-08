@@ -3,22 +3,24 @@ import {
   TestCenterInformationResponse,
   TestCenterInformation,
 } from '../interfaces/test-center';
-import { getRequest, convertToQueryString } from '../util/http';
+import { getRequest, convertToQueryString, server, servers } from '../util/http';
 
-export const getTestCenters = async (): Promise<TestCentersResponse> => {
+export const getTestCenters = async (numberOfWeeks: number = 2, server: server = 'production', corsAnywhere = true): Promise<TestCentersResponse> => {
   return await getRequest<TestCentersResponse>(
-    'https://test.api.vgregion.se/e-crm-scheduling-public/api/v1/testCenter',
+    `${servers[server]}/testCenter?numberOfWeeks=${numberOfWeeks}`,
     {
       headers: {
-        client_id: 'c4d279f9b8094dbaafd0162c5a606623',
-        client_secret: '39D6cAB5D89c448ea3355aAC61De19e7',
+        client_id: '',
+        client_secret: '',
       },
-    }
+    },
+    corsAnywhere
   );
 };
 
 export const getTestCenterInformation = async (
-  filters?: Partial<TestCenterInformation>
+  filters?: Partial<TestCenterInformation>,
+  corsAnywhere = true,
 ): Promise<TestCenterInformationResponse> => {
   return await getRequest<TestCenterInformationResponse>(
     `https://vgregion.entryscape.net/rowstore/dataset/70241cef-e111-4b07-bb55-99b5981f47de${convertToQueryString(
@@ -28,6 +30,7 @@ export const getTestCenterInformation = async (
       headers: {
         accept: 'application/json',
       },
-    }
+    },
+    corsAnywhere
   );
 };
