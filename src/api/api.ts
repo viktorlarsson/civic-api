@@ -7,7 +7,6 @@ import {
 import {
   getRequest,
   convertToQueryString,
-  server,
   servers,
 } from '../util/http';
 
