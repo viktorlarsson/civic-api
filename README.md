@@ -1,4 +1,4 @@
-# Civic API
+# VGR Vaccine Time Slots
 
 Integration with Västra Götalands Vaccine API using Javascript that will work in the browser and node.
 
