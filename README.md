@@ -22,8 +22,14 @@ import { getTestCenters, setCredentials } from 'civic-api';
 
 setCredentials('your client id', 'your client secret');
 
+// Default is 2 weeks
 const testCenters = getTestCenters();
-const testCenters4weeks = getTestCenters(4, 'production');
+
+// Get 4 weeks from now
+const testCenters4weeks = getTestCenters(4);
+
+// Change server environment
+const testCenters4weeksFromTest = getTestCenters(4, 'test');
 
 ```
 
