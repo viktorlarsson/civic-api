@@ -9,7 +9,7 @@ describe('http', () => {
   });
 
   it('set credentials', () => {
-    setCredentials('yolo123', 'foobar')
+    setCredentials('yolo123', 'foobar');
 
     expect(axios.defaults.headers.get['client_id']).toEqual('yolo123');
     expect(axios.defaults.headers.get['client_secret']).toEqual('foobar');
