@@ -5,11 +5,10 @@ import { server } from '../util/http';
  *
  * @param numberOfWeeks Number of weeks to fetch
  * @param server The server to use
- * @param corsAnywhere Fetches the server through a cors anywhere service
  *
  * @returns A list of test centers
  */
-export declare const getTestCenters: (numberOfWeeks?: number, server?: server, corsAnywhere?: boolean) => Promise<TestCentersResponse>;
+export declare const getTestCenters: (numberOfWeeks?: number, server?: server) => Promise<TestCentersResponse>;
 /**
  * Fetches more information regarding test center
  *
@@ -23,4 +22,4 @@ export declare const getTestCenters: (numberOfWeeks?: number, server?: server, c
  *
  * @returns A curated list of test center information
  */
-export declare const getTestCenterInformation: (filters?: Partial<TestCenterInformation> | undefined, corsAnywhere?: boolean) => Promise<TestCenterInformationResponse>;
+export declare const getTestCenterInformation: (filters?: Partial<TestCenterInformation> | undefined) => Promise<TestCenterInformationResponse>;

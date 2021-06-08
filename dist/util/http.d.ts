@@ -8,4 +8,4 @@ export declare const servers: {
 };
 export declare const setCredentials: (client_id: string, client_secret: string) => void;
 export declare const convertToQueryString: (params: any) => string;
-export declare const getRequest: <T>(url: string, corsAnywhere?: boolean, options?: AxiosRequestConfig | undefined) => Promise<T>;
+export declare const getRequest: <T>(url: string, options?: AxiosRequestConfig | undefined) => Promise<T>;

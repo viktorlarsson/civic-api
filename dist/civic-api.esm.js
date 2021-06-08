@@ -790,6 +790,10 @@ try {
 }
 });
 
+var isBrowser = function isBrowser() {
+  return typeof window !== "undefined";
+};
+
 var servers = {
   mockingService: 'https://eu1.anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/7022b556-013d-4fc9-966c-298db3fc6a46/e-crm-scheduling-public/1.0.2/m',
   qa: 'https://qa.api.vgregion.se/e-crm-scheduling-public/api/v1',
@@ -810,24 +814,20 @@ var convertToQueryString = function convertToQueryString(params) {
   }).join('&');
 };
 var getRequest = /*#__PURE__*/function () {
-  var _ref = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/runtime_1.mark(function _callee(url, corsAnywhere, options) {
+  var _ref = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/runtime_1.mark(function _callee(url, options) {
     var response;
     return runtime_1.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            if (corsAnywhere === void 0) {
-              corsAnywhere = true;
-            }
+            _context.next = 2;
+            return axios.get("" + (isBrowser() && 'https://cors-anywhere.rost.me/') + url, options);
 
-            _context.next = 3;
-            return axios.get("" + (corsAnywhere && 'https://cors-anywhere.rost.me/') + url, options);
-
-          case 3:
+          case 2:
             response = _context.sent;
             return _context.abrupt("return", response.data);
 
-          case 5:
+          case 4:
           case "end":
             return _context.stop();
         }
@@ -835,7 +835,7 @@ var getRequest = /*#__PURE__*/function () {
     }, _callee);
   }));
 
-  return function getRequest(_x, _x2, _x3) {
+  return function getRequest(_x, _x2) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -845,13 +845,12 @@ var getRequest = /*#__PURE__*/function () {
  *
  * @param numberOfWeeks Number of weeks to fetch
  * @param server The server to use
- * @param corsAnywhere Fetches the server through a cors anywhere service
  *
  * @returns A list of test centers
  */
 
 var getTestCenters = /*#__PURE__*/function () {
-  var _ref = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/runtime_1.mark(function _callee(numberOfWeeks, server, corsAnywhere) {
+  var _ref = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/runtime_1.mark(function _callee(numberOfWeeks, server) {
     return runtime_1.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -864,25 +863,21 @@ var getTestCenters = /*#__PURE__*/function () {
               server = 'production';
             }
 
-            if (corsAnywhere === void 0) {
-              corsAnywhere = true;
-            }
-
             if (!(!axios.defaults.headers.get['client_id'] && axios.defaults.headers.get['client_secret'])) {
-              _context.next = 5;
+              _context.next = 4;
               break;
             }
 
             throw new Error('No client id or secret set, run setCredentials first');
 
-          case 5:
-            _context.next = 7;
-            return getRequest(servers[server] + "/testCenter?numberOfWeeks=" + numberOfWeeks, corsAnywhere);
+          case 4:
+            _context.next = 6;
+            return getRequest(servers[server] + "/testCenter?numberOfWeeks=" + numberOfWeeks);
 
-          case 7:
+          case 6:
             return _context.abrupt("return", _context.sent);
 
-          case 8:
+          case 7:
           case "end":
             return _context.stop();
         }
@@ -890,7 +885,7 @@ var getTestCenters = /*#__PURE__*/function () {
     }, _callee);
   }));
 
-  return function getTestCenters(_x, _x2, _x3) {
+  return function getTestCenters(_x, _x2) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -909,26 +904,22 @@ var getTestCenters = /*#__PURE__*/function () {
  */
 
 var getTestCenterInformation = /*#__PURE__*/function () {
-  var _ref2 = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/runtime_1.mark(function _callee2(filters, corsAnywhere) {
+  var _ref2 = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/runtime_1.mark(function _callee2(filters) {
     return runtime_1.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            if (corsAnywhere === void 0) {
-              corsAnywhere = true;
-            }
-
-            _context2.next = 3;
-            return getRequest("https://vgregion.entryscape.net/rowstore/dataset/70241cef-e111-4b07-bb55-99b5981f47de" + convertToQueryString(filters), corsAnywhere, {
+            _context2.next = 2;
+            return getRequest("https://vgregion.entryscape.net/rowstore/dataset/70241cef-e111-4b07-bb55-99b5981f47de" + convertToQueryString(filters), {
               headers: {
                 accept: 'application/json'
               }
             });
 
-          case 3:
+          case 2:
             return _context2.abrupt("return", _context2.sent);
 
-          case 4:
+          case 3:
           case "end":
             return _context2.stop();
         }
@@ -936,7 +927,7 @@ var getTestCenterInformation = /*#__PURE__*/function () {
     }, _callee2);
   }));
 
-  return function getTestCenterInformation(_x4, _x5) {
+  return function getTestCenterInformation(_x3) {
     return _ref2.apply(this, arguments);
   };
 }();
